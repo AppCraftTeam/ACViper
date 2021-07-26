@@ -26,35 +26,34 @@ open class ViperRouter: ViperRouterInput {
     // MARK: - ViperRouterInputProtocol
     
     open func dismiss(animated: Bool) {
-        DispatchQueue.main.async {
-            self._mainController?.dismiss(animated: animated, completion: nil)
+        DispatchQueue.main.async { [weak self] in
+            self?._mainController?.dismiss(animated: animated, completion: nil)
         }
     }
     
     open func goBack(animated: Bool) {
-        DispatchQueue.main.async {
-            self._mainController?.navigationController?.popViewController(animated: animated)
+        DispatchQueue.main.async { [weak self] in
+            self?._mainController?.navigationController?.popViewController(animated: animated)
         }
     }
     
     open func goToRoot(animated: Bool) {
-        DispatchQueue.main.async {
-            self._mainController?.navigationController?.popToRootViewController(animated: animated)
+        DispatchQueue.main.async { [weak self] in
+            self?._mainController?.navigationController?.popToRootViewController(animated: animated)
         }
     }
     
     // MARK: - Module functions
     
     open func present(_ viewController: UIViewController, animated: Bool) {
-        DispatchQueue.main.async {
-            self._mainController?.present(viewController, animated: animated, completion: nil)
+        DispatchQueue.main.async { [weak self] in
+            self?._mainController?.present(viewController, animated: animated, completion: nil)
         }
     }
     
-    open func push(to viewController: UIViewController, animated: Bool) {
-        DispatchQueue.main.async {
-            self._mainController?.navigationController?.pushViewController(viewController, animated: animated)
+    open func push(_ viewController: UIViewController, animated: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            self?._mainController?.navigationController?.pushViewController(viewController, animated: animated)
         }
     }
-        
 }

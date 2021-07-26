@@ -72,16 +72,16 @@ open class ViperViewController: UIViewController, ViperViewInput {
     }
     
     open func show(title: String?, message: String?, animated: Bool) {
-        let alertController = UIAlertController(title: title,
-                                                message: message,
-                                                preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "ОК".localized,
-                                     style: .default,
-                                     handler: nil)
-        alertController.addAction(okAction)
-        
         DispatchQueue.main.async { [weak self] in
+            let alertController = UIAlertController(title: title,
+                                                    message: message,
+                                                    preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "ОК".localized,
+                                         style: .default,
+                                         handler: nil)
+            alertController.addAction(okAction)
+            
             self?.present(alertController, animated: animated, completion: nil)
         }
     }
@@ -91,5 +91,4 @@ open class ViperViewController: UIViewController, ViperViewInput {
             self?.present(alertController, animated: animated, completion: nil)
         }
     }
-    
 }
